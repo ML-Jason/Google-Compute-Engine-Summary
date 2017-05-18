@@ -6,4 +6,5 @@
 * [執行個體範本](/instance-template.md)
 * [磁碟](ci-die.md)
 * [環境的準備\(for Node.js\)](huan-jing-de-zhun-509928-for-node-js.md)
+* [更新群體的範本](geng-xin-qun-ti-de-fan-ben.md)
 
