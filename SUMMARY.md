@@ -1,6 +1,7 @@
 # Summary
 
 * [Introduction](introduction.md)
+* [VM執行個體](vmzhi-xing-ge-ti.md)
 * [執行個體群體](README.md)
 * [執行個體範本](chapter1.md)
 
