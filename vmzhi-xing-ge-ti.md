@@ -1,4 +1,4 @@
-## VM執行個體
+# VM執行個體
 
 Google Compute Engine基本上就是VM的服務，我們可以藉由幾種方式建立VM：
 
