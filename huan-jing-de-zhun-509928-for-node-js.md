@@ -4,7 +4,7 @@
 
 1.從現有的映像檔裡建立一個Instance，區域看情況，台灣的話可以選asia-east1，速度可能會比較快。在下方【允許HTTP】及【允許HTTPS】的地方記得打勾，否則網頁會連不到。
 
-> 映像檔通常都會選擇Debian GNU/Linux 8 \(jessie\)
+> 這裡的範例是以Debian GNU/Linux 8 \(jessie\)的映像檔當範例，如果是Centos的話，有些命令會稍微不太一樣。
 
 2.Instance建立好之後，點選【SSH】，可以直接用網頁的方式SSH進入該Instance。
 
