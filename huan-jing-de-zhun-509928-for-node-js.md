@@ -107,6 +107,8 @@ sudo pm2 save
 ```
 
 > 記得一定要sudo pm2 save，否則重新開機後，應用程式不會被pm2自動啟動
+>
+> 如果是Linux環境，可以考慮用pm2的cluster模式開啟多個instance執行，增加CPU的使用率。
 
 15.回到執行個體列表，可以透過外部ip看看是否正常運作。
 
