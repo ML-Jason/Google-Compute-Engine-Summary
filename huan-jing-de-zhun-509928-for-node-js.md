@@ -112,3 +112,14 @@ sudo pm2 save
 
 15.回到執行個體列表，可以透過外部ip看看是否正常運作。
 
+16.如果需要安裝GM\(graphicmagick\)：
+
+```
+sudo apt-get update
+sudo apt-get install graphicsmagick
+```
+
+> 字型的話直接上傳到主機上，透過路徑的方式使用即可。
+
+
+
