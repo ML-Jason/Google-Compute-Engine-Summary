@@ -59,7 +59,7 @@ server {
   listen 80;
   listen [::]:80;                                                  
   listen 443 ssl;
-                                                     
+
   server_name www.medialand.com.tw;
 
   ssl_certificate /etc/nginx/ssl/pizzahutevent07.crt;                                                                                                
@@ -148,6 +148,18 @@ sudo apt-get install graphicsmagick
 ```
 
 > 字型的話直接上傳到主機上，透過路徑的方式使用即可。
+
+17.如果不想透過Git更新檔案，想直接用SFTP的話，記得修改檔案的Group：
+
+```
+cd /home
+chown -R :adm www
+chmod -R g+rwx www
+```
+
+> 以上的命令是把www的目錄設為adm這個群組擁有，並且有rwx的權限
+>
+> 預設開發者都應該是adm，如果不是的話，自建群組並指派。
 
 
 
