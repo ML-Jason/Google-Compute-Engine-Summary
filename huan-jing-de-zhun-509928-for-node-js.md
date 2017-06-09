@@ -52,6 +52,34 @@ server {
 }
 ```
 
+如果設定好SSL，需要強制把HTTP導向到HTTPS的話，會像是這樣：
+
+```
+server {
+  listen 80;
+  listen [::]:80;                                                  
+  listen 443 ssl;
+                                                     
+  server_name www.medialand.com.tw;
+
+  ssl_certificate /etc/nginx/ssl/pizzahutevent07.crt;                                                                                                
+  ssl_certificate_key /etc/nginx/ssl/pizzahutevent07.KEY;    
+
+  if ($http_x_forwarded_proto = "http") {
+    return 301 https://$host$request_uri;
+  }
+
+  location / {                                                                                  
+    proxy_pass http://127.0.0.1:8080;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_set_header Host $host;
+    proxy_cache_bypass $http_upgrade;                                                      
+  }                                                                                             
+}
+```
+
 8.啟動nginx：
 
 ```
