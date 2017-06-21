@@ -153,8 +153,9 @@ sudo apt-get install graphicsmagick
 
 ```
 cd /home
-chown -R :adm www
-chmod -R g+rwx www
+sudo chown -R :adm www
+sudo chmod -R g+rwx www
+sudo setfacl -Rdm g:adm:rwx ww
 ```
 
 > 以上的命令是把www的目錄設為adm這個群組擁有，並且有rwx的權限
