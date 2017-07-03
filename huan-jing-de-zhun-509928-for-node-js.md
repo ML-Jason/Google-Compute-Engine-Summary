@@ -103,6 +103,8 @@ sudo pm2 logrotate -u user
 >
 > /home/user/.pm2/logs/
 >
+> 因此，如果需要取得pm2的log檔，請盡量避免使用sudo啟動app，否則pm2的log存放的地方只有root才有權限存取。
+>
 > 關於pm2的log我還沒有摸熟，可參考官網資料：
 >
 > [http://pm2.keymetrics.io/docs/usage/log-management/](http://pm2.keymetrics.io/docs/usage/log-management/)
@@ -143,7 +145,9 @@ sudo pm2 start index.js
 sudo pm2 save
 ```
 
-> 記得一定要sudo pm2 save，否則重新開機後，應用程式不會被pm2自動啟動
+> 記得一定要sudo pm2 save，否則重新開機後，應用程式不會被pm2自動啟動。
+>
+> 如果需要取得pm2的log，請不要用sudo執行pm2。
 >
 > 如果是Linux環境，可以考慮用pm2的cluster模式開啟多個instance執行，增加CPU的使用率。
 
