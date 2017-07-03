@@ -92,11 +92,20 @@ sudo service nginx restart
 sudo npm install -g pm2
 ```
 
-10.設定pm2在系統重開機後自動啟動之前透過pm2 save所記錄的應用程式：
+10.設定pm2在系統重開機後自動啟動之前透過pm2 save所記錄的應用程式，並指定logrotate：
 
 ```
 sudo pm2 startup
+sudo pm2 logrotate -u user
 ```
+
+> pm2的log預設是放在啟動的使用這home目錄之下，假設啟動者是user，則pm2的log會放在：
+>
+> /home/user/.pm2/logs/
+>
+> 關於pm2的log我還沒有摸熟，可參考官網資料：
+>
+> [http://pm2.keymetrics.io/docs/usage/log-management/](http://pm2.keymetrics.io/docs/usage/log-management/)
 
 11.接下來就可以佈署程式，建立應用程式的目錄：
 
