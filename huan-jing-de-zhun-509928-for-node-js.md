@@ -127,7 +127,7 @@ pm2 install pm2-logrotate
 >
 > [http://pm2.keymetrics.io/docs/usage/log-management/](http://pm2.keymetrics.io/docs/usage/log-management/)
 
-11.接下來就可以佈署程式，建立應用程式的目錄：
+12.接下來就可以佈署程式，建立應用程式的目錄：
 
 ```
 su webuser
@@ -139,7 +139,7 @@ sudo mkdir helloworld
 cd helloworld
 ```
 
-12.初始化git，並將某個repo加入到git的remote：
+13.初始化git，並將某個repo加入到git的remote：
 
 ```
 git init
@@ -148,7 +148,7 @@ git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05
 
 > LoginName是GitHub上的名稱，不是email\(例如:ML-Jason\)，Password是密碼
 
-13.從GitHub上fetch，並強制讓local的檔案與GitHub上同步：
+14.從GitHub上fetch，並強制讓local的檔案與GitHub上同步：
 
 ```
 sudo git fetch origin
