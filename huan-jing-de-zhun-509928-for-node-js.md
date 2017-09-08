@@ -151,29 +151,27 @@ git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05
 14.從GitHub上fetch，並強制讓local的檔案與GitHub上同步：
 
 ```
-sudo git fetch origin
-sudo git reset --hard origin/master
+git fetch origin
+git reset --hard origin/master
 ```
 
 > 使用git reset --hard的原因是避免殘留檔案、衝突，一但reset --hard，就會強制的把local檔案與remote同步。
 
-14.啟動應用程式，並save：
+15.啟動應用程式，並save：
 
 ```
-sudo npm i
-sudo pm2 start index.js
-sudo pm2 save
+npm i
+pm2 start index.js
+pm2 save
 ```
 
-> 記得一定要sudo pm2 save，否則重新開機後，應用程式不會被pm2自動啟動。
+> 記得一定要pm2 save，否則重新開機後，應用程式不會被pm2自動啟動。
 >
 > 如果需要取得pm2的log，請不要用sudo執行pm2。
->
-> 如果是Linux環境，可以考慮用pm2的cluster模式開啟多個instance執行，增加CPU的使用率。
 
-15.回到執行個體列表，可以透過外部ip看看是否正常運作。
+16.回到執行個體列表，可以透過外部ip看看是否正常運作。
 
-16.如果需要安裝GM\(graphicmagick\)：
+17.如果需要安裝GM\(graphicmagick\)：
 
 ```
 sudo apt-get update
@@ -182,7 +180,7 @@ sudo apt-get install graphicsmagick
 
 > 字型的話直接上傳到主機上，透過路徑的方式使用即可。
 
-17.如果不想透過Git更新檔案，想直接用SFTP的話，記得修改檔案的Group：
+18.\(這一點待調整\)如果不想透過Git更新檔案，想直接用SFTP的話，記得修改檔案的Group：
 
 ```
 cd /home
