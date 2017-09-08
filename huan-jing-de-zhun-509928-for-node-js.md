@@ -92,11 +92,23 @@ sudo service nginx restart
 sudo npm install -g pm2
 ```
 
-10.設定pm2在系統重開機後自動啟動之前透過pm2 save所記錄的應用程式，並指定logrotate：
+10.建立執行pm2的使用者，並移除它的密碼，並給予sudo權限\(這是為了讓pm2的log存放在可存取的目錄\)
 
 ```
-sudo pm2 startup
-sudo pm2 logrotate -u user
+sudo adduser webuser
+sudo passwd -d webuser
+sudo usermod -aG sudo webuser
+```
+
+> 之後就統一使用webuser進行pm2的操作，如果要切換成webuser，就輸入：
+>
+> su webuser
+
+11.設定pm2在系統重開機後自動啟動，並安裝logrotate：
+
+```
+pm2 startup
+pm2 install pm2-logrotate
 ```
 
 > sudo pm2 startup只會發生在用sudo啟動pm2的情況，如果不是sudo執行pm2的話，會需要改成：
@@ -104,8 +116,6 @@ sudo pm2 logrotate -u user
 > sudo env PATH=$PATH:/usr/bin /usr/lib/node\_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user
 >
 > \(其中user是執行的人，其實只要執行pm2 startup，系統就會提省要輸入什麼指令\)
->
->
 >
 > pm2的log預設是放在啟動的使用這home目錄之下，假設啟動者是user，則pm2的log會放在：
 >
@@ -120,8 +130,10 @@ sudo pm2 logrotate -u user
 11.接下來就可以佈署程式，建立應用程式的目錄：
 
 ```
+su webuser
 cd /home
 sudo mkdir www
+sudo chown webuser www
 cd www
 sudo mkdir helloworld
 cd helloworld
@@ -130,8 +142,8 @@ cd helloworld
 12.初始化git，並將某個repo加入到git的remote：
 
 ```
-sudo git init
-sudo git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05_ML_GitHub_Manager.git
+git init
+git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05_ML_GitHub_Manager.git
 ```
 
 > LoginName是GitHub上的名稱，不是email\(例如:ML-Jason\)，Password是密碼
