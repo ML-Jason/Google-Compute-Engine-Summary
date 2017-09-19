@@ -92,7 +92,7 @@ sudo service nginx restart
 sudo npm install -g pm2
 ```
 
-10.建立執行pm2的使用者，並移除它的密碼，並給予sudo權限\(這是為了讓pm2的log存放在可存取的目錄\)
+10.建立執行pm2的使用者，移除它的密碼\(這是為了讓pm2的log存放在可存取的目錄\)，並給予sudo與adm的權限\(GCP預設的管理者都是adm群組\)
 
 ```
 sudo adduser webuser
@@ -104,6 +104,10 @@ sudo usermod -aG adm webuser
 > 之後就統一使用webuser進行pm2的操作，如果要切換成webuser，就輸入：
 >
 > su webuser
+>
+> 如果要跳離webuser，就輸入：
+>
+> exit
 
 11.設定pm2在系統重開機後自動啟動，並安裝logrotate：
 
@@ -130,11 +134,25 @@ pm2 install pm2-logrotate
 
 12.接下來就可以佈署程式，建立應用程式的目錄：
 
+切換成webuser，建立目錄，並改變目錄所屬群組。
+
 ```
 su webuser
 cd /home
 sudo mkdir www
-sudo setfacl -Rm g:adm:rwx ./www
+sudo chgrp adm ./www
+```
+
+安裝acl\(要用來設定整個目錄的預設權限\)，並設定www目錄裡所有新增的檔案都預設為adm群組，這樣其它adm群組的成員才有辦法修改檔案。
+
+```
+apt-get install acl
+sudo setfacl -Rm d:g:adm:rwX,g:adm:rwX ./www
+```
+
+設定好之後，就可以在www裡新增檔案或目錄。
+
+```
 cd www
 mkdir helloworld
 cd helloworld
