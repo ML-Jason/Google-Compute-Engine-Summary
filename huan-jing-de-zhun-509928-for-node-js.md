@@ -134,9 +134,9 @@ pm2 install pm2-logrotate
 su webuser
 cd /home
 sudo mkdir www
-sudo chown webuser www
+setfacl -Rm g:adm:rwx ./www
 cd www
-sudo mkdir helloworld
+mkdir helloworld
 cd helloworld
 ```
 
