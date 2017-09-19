@@ -134,13 +134,12 @@ pm2 install pm2-logrotate
 
 12.接下來就可以佈署程式，建立應用程式的目錄：
 
-切換成webuser，建立目錄，並改變目錄所屬群組。
+切換成webuser，建立目錄。
 
 ```
 su webuser
 cd /home
 sudo mkdir www
-sudo chgrp adm ./www
 ```
 
 安裝acl\(要用來設定整個目錄的預設權限\)，並設定www目錄裡所有新增的檔案都預設為adm群組，這樣其它adm群組的成員才有辦法修改檔案。
