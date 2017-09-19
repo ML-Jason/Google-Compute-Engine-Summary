@@ -99,8 +99,6 @@ sudo adduser webuser
 sudo passwd -d webuser
 sudo usermod -aG sudo webuser
 sudo usermod -aG adm webuser
-
-sudo useradd -m -G adm webuser
 ```
 
 > 之後就統一使用webuser進行pm2的操作，如果要切換成webuser，就輸入：
