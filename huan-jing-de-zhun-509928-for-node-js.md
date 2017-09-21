@@ -200,5 +200,3 @@ sudo apt-get install graphicsmagick
 
 
 
-
-

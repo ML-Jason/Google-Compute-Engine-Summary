@@ -75,7 +75,7 @@ bucket.acl.default.add({
 4.將檔案上傳
 
 ```js
-const filename = './somepic.jpg';
+const filename = 'path/somepic.jpg';
 const writeStream = bucket.file(filename).createWriteStream({
   resumable: false,
   metadata: { contentType: 'image/jpeg' },
@@ -86,6 +86,7 @@ writeStream.on('error', (err) => {
 writeStream.on('finish', () => {
   console.log('done');
 });
+writeStream.end(buffer.data);
 ```
 
 > 注意：在上傳時createWriteStream裡帶的參數最好填寫metadata的contentType\(尤其是圖檔\)，否則Google有時會誤判，透過網址去query圖檔時會變成其它格式。
