@@ -72,10 +72,10 @@ bucket.acl.default.add({
 
 > 注意：這一步驟很重要，否則上傳到Bucket上的檔案預設是無法被其它人讀取的。
 
-4.將檔案上傳
+4.將檔案上傳\(stream\)
 
 ```js
-const filename = 'path/somepic.jpg';
+const filename = 'path/somepic.jpg'; //遠端的路徑
 const writeStream = bucket.file(filename).createWriteStream({
   resumable: false,
   metadata: { contentType: 'image/jpeg' },
@@ -90,6 +90,20 @@ writeStream.end(buffer.data);
 ```
 
 > 注意：在上傳時createWriteStream裡帶的參數最好填寫metadata的contentType\(尤其是圖檔\)，否則Google有時會誤判，透過網址去query圖檔時會變成其它格式。
+
+5.將檔案上傳\(file\)
+
+    const filename = 'path/somepic.jpg'; //遠端的路徑
+    const localfile = './xxxx.jpg'; //local端的路徑
+    bucket
+      .file(filename)
+      .upload(localfile)
+      .then(() => {
+        console.log(`${localfile} uploaded to ${filename}.`);
+      })
+      .catch((err) => {
+        console.error('ERROR:', err);
+      });
 
 
 
