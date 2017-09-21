@@ -93,17 +93,19 @@ writeStream.end(buffer.data);
 
 5.將檔案上傳\(file\)
 
-    const filename = 'path/somepic.jpg'; //遠端的路徑
-    const localfile = './xxxx.jpg'; //local端的路徑
-    bucket
-      .file(filename)
-      .upload(localfile)
-      .then(() => {
-        console.log(`${localfile} uploaded to ${filename}.`);
-      })
-      .catch((err) => {
-        console.error('ERROR:', err);
-      });
+```js
+const filename = 'path/somepic.jpg'; //遠端的路徑
+const localfile = './xxxx.jpg'; //local端的路徑
+bucket
+  .file(filename)
+  .upload(localfile)
+  .then(() => {
+    console.log(`${localfile} uploaded to ${filename}.`);
+  })
+  .catch((err) => {
+    console.error('ERROR:', err);
+  });
+```
 
 
 
