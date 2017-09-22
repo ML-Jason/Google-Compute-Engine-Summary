@@ -13,7 +13,12 @@
 ```
 sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
-sudo ln -s /usr/bin/nodejs /usr/bin/node
+```
+
+上述如果是要安裝node 7的版本，請把第一行改成
+
+```
+sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 ```
 
 4.安裝Git \(更新code的時候使用Git比較方便\)：
