@@ -90,6 +90,7 @@ sudo service nginx restart
 
 ```
 sudo npm install -g pm2
+sudo pm2 startup
 ```
 
 10.建立執行pm2的使用者，移除它的密碼\(這是為了讓pm2的log存放在可存取的目錄\)，並給予sudo與adm的權限\(GCP預設的管理者都是adm群組\)
