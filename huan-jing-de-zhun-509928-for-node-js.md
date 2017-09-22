@@ -118,11 +118,11 @@ pm2 startup
 pm2 install pm2-logrotate
 ```
 
-> sudo pm2 startup只會發生在用sudo啟動pm2的情況，如果不是sudo執行pm2的話，會需要改成：
+> 注意!!! sudo pm2 startup只會發生在用sudo啟動pm2的情況，如果不是sudo執行pm2的話，會需要改成：
 >
-> sudo env PATH=$PATH:/usr/bin /usr/lib/node\_modules/pm2/bin/pm2 startup systemd -u user --hp /home/user
+> sudo env PATH=$PATH:/usr/bin /usr/lib/node\_modules/pm2/bin/pm2 startup systemd -u webuser --hp /home/webuser
 >
-> \(其中user是執行的人，其實只要執行pm2 startup，系統就會提省要輸入什麼指令\)
+> \(其中webuser是執行的人，其實只要執行pm2 startup，系統就會提省要輸入什麼指令\)
 >
 > pm2的log預設是放在啟動的使用這home目錄之下，假設啟動者是user，則pm2的log會放在：
 >
