@@ -113,6 +113,7 @@ sudo usermod -aG adm webuser
 11.設定pm2在系統重開機後自動啟動，並安裝logrotate：
 
 ```
+su webuser
 pm2 startup
 pm2 install pm2-logrotate
 ```
