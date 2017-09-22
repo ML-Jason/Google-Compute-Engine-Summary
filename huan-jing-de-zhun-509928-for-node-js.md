@@ -147,7 +147,7 @@ sudo mkdir www
 安裝acl\(要用來設定整個目錄的預設權限\)，並設定www目錄裡所有新增的檔案都預設為adm群組，這樣其它adm群組的成員才有辦法修改檔案。
 
 ```
-apt-get install acl
+sudo apt-get install acl
 sudo setfacl -Rm d:g:adm:rwX,g:adm:rwX ./www
 ```
 
