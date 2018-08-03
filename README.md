@@ -6,17 +6,15 @@ Google Compute Engine基本上就是以VM為基底的服務。
 
 因此Google Compute Engine算是目前為止自由度較高且對於一般工程師而言比較能快速上手的選擇。
 
-#### VM執行個體
+#### [VM執行個體](/vmzhi-xing-ge-ti.md)
 
-[Link](/vmzhi-xing-ge-ti.md)
+#### [執行個體群體](/instance-group.md)
 
-#### 執行個體群體
+#### [執行個體範本](/instance-template.md)
 
-[Link](/instance-group.md)
+#### [環境的準備](/huan-jing-de-zhun-509928-for-node-js.md)
 
-#### 執行個體範本
-
-[Link](/instance-template.md)
+#### [Cloud Storage](/cloud-storage.md)
 
 
 
