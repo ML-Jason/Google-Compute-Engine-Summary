@@ -8,9 +8,15 @@ Google Compute Engine基本上就是以VM為基底的服務。
 
 #### VM執行個體
 
-[VM執行個體](/vmzhi-xing-ge-ti.md "VM執行個體")
+[Link](/vmzhi-xing-ge-ti.md)
 
+#### 執行個體群體
 
+[Link](/instance-group.md)
+
+#### 執行個體範本
+
+[Link](/instance-template.md)
 
 
 
