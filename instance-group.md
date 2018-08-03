@@ -4,9 +4,9 @@
 
 執行個體群體有分成兩種：
 
-#### 1. Managed Instance Group {#managed-instance-group}
+## 1. Managed Instance Group {#managed-instance-group}
 
-這個群組裡的個體基本上都是由[執行個體範本](/執行個體範本)\(\*1\)所產生，所以每個個體在產生的時候都是一模一樣的。我們可以設定群組裡instance的數目來進行scaling，群組會自動產生或移除instance來符合需求。
+這個群組裡的個體基本上都是由[執行個體範本](https://github.com/ML-Jason/Google-Compute-Engine-Summary/tree/f6a3d1ed73ece9e68c2c5960fbe00f82fd819c01/執行個體範本/README.md)\(\*1\)所產生，所以每個個體在產生的時候都是一模一樣的。我們可以設定群組裡instance的數目來進行scaling，群組會自動產生或移除instance來符合需求。
 
 這種群組裡的個體【可以支援】autoscaling、rolling updating\(\*2\)。
 
@@ -16,7 +16,7 @@
 >
 > \*2. 如果有新的instance template，可以用rolling update來更新群組裡的所有個體。
 
-#### 2. Unmanaged Instance Group {#unmanaged-instance-group}
+## 2. Unmanaged Instance Group {#unmanaged-instance-group}
 
 照字面上的意思來看，在這裡面的執行個體基本上都是單獨獨立的個體，我們可以在裡面自由的增加、移除個體。
 

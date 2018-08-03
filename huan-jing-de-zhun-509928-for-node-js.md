@@ -1,6 +1,6 @@
 # 環境的準備\(for Node.js\)
 
-#### 如果環境已經架設好，只是要佈署新的Node專案，可以直接從第11點開始。
+## 如果環境已經架設好，只是要佈署新的Node專案，可以直接從第11點開始。
 
 1.從現有的映像檔裡建立一個Instance，區域看情況，台灣的話可以選asia-east1，速度可能會比較快。在下方【允許HTTP】及【允許HTTPS】的地方記得打勾，否則網頁會連不到。
 
@@ -10,32 +10,32 @@
 
 3.下載Node.js並安裝：
 
-```
+```text
 sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
 上述如果是要安裝node 7的版本，請把第一行改成
 
-```
+```text
 sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 ```
 
 4.安裝Git \(更新code的時候使用Git比較方便\)：
 
-```
+```text
 sudo apt-get install -y git
 ```
 
 5.安裝nginx：
 
-```
+```text
 sudo apt-get install -y nginx
 ```
 
 6.修改nginx的設定\(進入nginx設定目錄，將原本的default備份，再建立新的\)：
 
-```
+```text
 cd /etc/nginx/sites-available
 sudo mv default default.bak
 sudo vi default
@@ -43,7 +43,7 @@ sudo vi default
 
 7.新建的default請參考下方
 
-```
+```text
 server {
   listen 80;
 
@@ -59,7 +59,7 @@ server {
 
 如果設定好SSL，需要強制把HTTP導向到HTTPS的話，會像是這樣：
 
-```
+```text
 server {
   listen 80;
   listen [::]:80;                                                  
@@ -87,20 +87,20 @@ server {
 
 8.啟動nginx：
 
-```
+```text
 sudo service nginx restart
 ```
 
 9.安裝pm2
 
-```
+```text
 sudo npm install -g pm2
 sudo pm2 startup
 ```
 
 10.建立執行pm2的使用者，移除它的密碼\(這是為了讓pm2的log存放在可存取的目錄\)，並給予sudo與adm的權限\(GCP預設的管理者都是adm群組\)
 
-```
+```text
 sudo adduser webuser
 sudo passwd -d webuser
 sudo usermod -aG sudo webuser
@@ -117,7 +117,7 @@ sudo usermod -aG adm webuser
 
 11.設定pm2在系統重開機後自動啟動，並安裝logrotate：
 
-```
+```text
 su webuser
 pm2 startup
 pm2 install pm2-logrotate
@@ -143,7 +143,7 @@ pm2 install pm2-logrotate
 
 切換成webuser，建立目錄。
 
-```
+```text
 su webuser
 cd /home
 sudo mkdir www
@@ -151,14 +151,14 @@ sudo mkdir www
 
 安裝acl\(要用來設定整個目錄的預設權限\)，並設定www目錄裡所有新增的檔案都預設為adm群組，這樣其它adm群組的成員才有辦法修改檔案。
 
-```
+```text
 sudo apt-get install acl
 sudo setfacl -Rm d:g:adm:rwX,g:adm:rwX ./www
 ```
 
 設定好之後，就可以在www裡新增檔案或目錄。
 
-```
+```text
 cd www
 mkdir helloworld
 cd helloworld
@@ -166,7 +166,7 @@ cd helloworld
 
 13.初始化git，並將某個repo加入到git的remote：
 
-```
+```text
 git init
 git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05_ML_GitHub_Manager.git
 ```
@@ -175,7 +175,7 @@ git remote add origin https://LoginName:Password@github.com/MedialandDev/2017_05
 
 14.從GitHub上fetch，並強制讓local的檔案與GitHub上同步：
 
-```
+```text
 git fetch origin
 git reset --hard origin/master
 ```
@@ -184,7 +184,7 @@ git reset --hard origin/master
 
 15.啟動應用程式，並save：
 
-```
+```text
 npm i
 pm2 start index.js
 pm2 save
@@ -198,12 +198,10 @@ pm2 save
 
 17.如果需要安裝GM\(graphicmagick\)：
 
-```
+```text
 sudo apt-get update
 sudo apt-get install graphicsmagick
 ```
 
 > 字型的話直接上傳到主機上，透過路徑的方式使用即可。
-
-
 

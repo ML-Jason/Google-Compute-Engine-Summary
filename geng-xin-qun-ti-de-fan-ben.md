@@ -1,6 +1,6 @@
 # 更新群體的範本
 
-更新群體範本主要是用在Managed Instance Group上，由於Managed Instance Group裡面的執行個體都是由某個[執行個體範本](/執行個體範本)產生的，因此當我們程式、環境有更新時，就需要一併更新所有群組裡的執行個體。
+更新群體範本主要是用在Managed Instance Group上，由於Managed Instance Group裡面的執行個體都是由某個[執行個體範本](https://github.com/ML-Jason/Google-Compute-Engine-Summary/tree/f6a3d1ed73ece9e68c2c5960fbe00f82fd819c01/執行個體範本/README.md)產生的，因此當我們程式、環境有更新時，就需要一併更新所有群組裡的執行個體。
 
 > 如果是Unmanaged Instance Group，就無法一次更新所有個體，需要自己一個一個去更新。
 
@@ -8,7 +8,7 @@
 
 2.當某個執行個體已經更新完畢之後，針對該個體點選【編輯】，將【刪除執行個體時一併刪除開機磁碟】這個選項取消。
 
-3.可以參考[執行個體範本](/執行個體範本)章節產生新的執行個體範本然後直接跳到第7點，或是往下看\(其實步驟差不多\)。
+3.可以參考[執行個體範本](https://github.com/ML-Jason/Google-Compute-Engine-Summary/tree/f6a3d1ed73ece9e68c2c5960fbe00f82fd819c01/執行個體範本/README.md)章節產生新的執行個體範本然後直接跳到第7點，或是往下看\(其實步驟差不多\)。
 
 4.將該個體刪除。
 
@@ -29,6 +29,4 @@
 > 效果好像差不多。
 >
 > 不管是哪種方式，系統建立新的VM時都會需要一點時間，因此更新的頻次、更新的時間點，都需要考慮進去。
-
-
 

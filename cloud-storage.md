@@ -10,7 +10,7 @@ Cloud Storage顧名思義就是用來存放檔案的地方，由於使用雲端�
 >
 > [https://cloud.google.com/storage/docs/how-to](https://cloud.google.com/storage/docs/how-to)
 
-### 建立Storage
+## 建立Storage
 
 要建立一個Storage相對簡單，只要在Google主控台上點選【選單】-&gt; 【Storage】，進入Storage單元，再點選【建立Bucket】，給予一個名稱，就建立了一個新的Storage Bucket了。
 
@@ -20,19 +20,19 @@ Cloud Storage顧名思義就是用來存放檔案的地方，由於使用雲端�
 >
 > \*這一點尚未實作，待日後確定。
 
-### 使用程式上傳檔案到Bucket
+## 使用程式上傳檔案到Bucket
 
 Google文件裡說明，如果App本身是在GCE上執行的話，是不需要任何認證就可以直接上傳的，但我們通常會在本機上先行開發，所以我們會需要取得Storage的【存取憑證】或是【API金鑰】，這樣才可以在本機端透過Google的Api來進行上傳。
 
 我這邊只列出使用憑證進行的方式。其它方式請參考Google的文件。
 
-#### 取得API憑證
+### 取得API憑證
 
 1. 點選【選單】-&gt; 【API管理員】-&gt; 【憑證】。
 2. 點擊【建立憑證】，選擇【服務帳戶金鑰】後，在服務帳戶裡可以選【Compute engine default service account】，然後下載json格式的憑證檔案。
 3. 將json檔案放置到專案某個目錄下，之後程式會需要去讀取它。
 
-#### Client Library \(For Node.js\)
+### Client Library \(For Node.js\)
 
 > 官方文件請參考：
 >
@@ -40,13 +40,13 @@ Google文件裡說明，如果App本身是在GCE上執行的話，是不需要�
 
 1.需要先安裝Google Storage Client Library
 
-```
+```text
 $ npm install --save @google-cloud/storage
 ```
 
 2.在js檔裡引用並初始化
 
-```js
+```javascript
 const gcs = require('@google-cloud/storage')({
   projectId: 'grape-spaceship-123',
   keyFilename: '/path/to/keyfile.json'
@@ -59,7 +59,7 @@ const gcs = require('@google-cloud/storage')({
 
 3.設定上傳後的檔案是【公開的】
 
-```js
+```javascript
 const bucketname = 'your_bucket_name';
 const bucket = gcs.bucket(bucketname);
 bucket.acl.default.add({
@@ -74,7 +74,7 @@ bucket.acl.default.add({
 
 4.將檔案上傳\(stream\)
 
-```js
+```javascript
 const filename = 'path/somepic.jpg'; //遠端的路徑
 const writeStream = bucket.file(filename).createWriteStream({
   resumable: false,
@@ -93,7 +93,7 @@ writeStream.end(buffer.data);
 
 5.將檔案上傳\(file\)
 
-```js
+```javascript
 const filename = 'path/somepic.jpg'; //遠端的路徑
 const localfile = './xxxx.jpg'; //local端的路徑
 bucket
@@ -106,6 +106,4 @@ bucket
     console.error('ERROR:', err);
   });
 ```
-
-
 
